@@ -38,5 +38,30 @@ namespace BCU.Performance.MiniProfilerMVCDemo.Controllers
 
             return View();
         }
+
+        public ActionResult GetAwesomness(string awesomeString)
+        {
+            var awesomeObject = new MyAwesomeClass();
+
+            if (awesomeString == "Too Damn Awesome")
+            {
+                awesomeObject.TheBestString = "Best String!";
+                awesomeObject.AnEvenBetterString = "So Damn Awesome!";
+            }
+            else
+            {
+                awesomeObject.TheBestString = "Meh";
+                awesomeObject.AnEvenBetterString = "It is all a Lie!";
+            }
+
+            return Json(awesomeObject, JsonRequestBehavior.AllowGet);
+        }
+    }
+
+    public class MyAwesomeClass
+    {
+        public string TheBestString { get; set; }
+
+        public string AnEvenBetterString { get; set; }
     }
 }
